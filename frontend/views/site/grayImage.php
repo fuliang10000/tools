@@ -35,7 +35,7 @@ $this->title = '彩图转灰图';
             <?= $form->field($model, 'file')->fileInput()->label('') ?>
 
             <div class="form-group">
-                <?= Html::submitButton('提交', ['class' => 'btn btn-primary', 'name' => 'grayImage-button']) ?>
+                <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-lg', 'name' => 'grayImage-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

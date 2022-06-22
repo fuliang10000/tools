@@ -26,7 +26,7 @@ $this->title = '进制转换';
             <?= $form->field($model, 'result') ?>
 
             <div class="form-group">
-                <?= Html::submitButton('提交', ['class' => 'btn btn-primary', 'name' => 'baseChange-button']) ?>
+                <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-lg', 'name' => 'baseChange-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

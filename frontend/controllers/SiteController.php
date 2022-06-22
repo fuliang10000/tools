@@ -3,7 +3,9 @@ namespace frontend\controllers;
 
 use frontend\business\BaseChange;
 use frontend\business\GrayImage;
+use frontend\business\KingHua;
 use frontend\models\BaseChangeForm;
+use frontend\models\KingHuaForm;
 use frontend\models\UploadImageForm;
 use Yii;
 use yii\web\Controller;
@@ -56,6 +58,23 @@ class SiteController extends Controller
         }
         ob_clean();
         return $this->render('grayImage', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionKingHua()
+    {
+        $model = new KingHuaForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $kingHua = new KingHua();
+            $kingHua->kingHuaMake($model);
+            if ($kingHua->code !== 200) {
+                Yii::$app->session->setFlash('error', $kingHua->message);
+            }
+            $model->result = $kingHua->result;
+        }
+        ob_clean();
+        return $this->render('kingHua', [
             'model' => $model,
         ]);
     }
