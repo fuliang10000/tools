@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = '小工具';
+$this->title = '工具盒';
 ?>
 <div class="site-index">
 

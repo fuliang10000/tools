@@ -19,9 +19,9 @@ $this->title = '进制转换';
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'baseChange-form']); ?>
 
-            <?= $form->field($model, 'num') ?>
-
             <?= $form->field($model, 'change')->dropDownList($changeList) ?>
+
+            <?= $form->field($model, 'num') ?>
 
             <?= $form->field($model, 'result') ?>
 
