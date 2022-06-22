@@ -4,8 +4,10 @@ namespace frontend\controllers;
 use frontend\business\BaseChange;
 use frontend\business\GrayImage;
 use frontend\business\KingHua;
+use frontend\business\SportsLottery;
 use frontend\models\BaseChangeForm;
 use frontend\models\KingHuaForm;
+use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
 use Yii;
 use yii\web\Controller;
@@ -75,6 +77,23 @@ class SiteController extends Controller
         }
         ob_clean();
         return $this->render('kingHua', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionSportsLottery()
+    {
+        $model = new SportsLotteryForm();
+        if (Yii::$app->request->isPost) {
+            $sportsLottery = new SportsLottery();
+            $sportsLottery->sportsLotteryMake();
+            if ($sportsLottery->code !== 200) {
+                Yii::$app->session->setFlash('error', $sportsLottery->message);
+            }
+            $model->result = $sportsLottery->result;
+        }
+        ob_clean();
+        return $this->render('sportsLottery', [
             'model' => $model,
         ]);
     }

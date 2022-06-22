@@ -24,27 +24,27 @@ $this->title = '金花概率';
             <ul class="list-group">
                 <li class="list-group-item">
                     <span class="badge"><?= $model->result['baozi'] ?? 0 ?></span>
-                    豹子数
+                    豹子
                 </li>
                 <li class="list-group-item">
                     <span class="badge"><?= $model->result['shunjin'] ?? 0 ?></span>
-                    顺金数
+                    顺金
                 </li>
                 <li class="list-group-item">
                     <span class="badge"><?= $model->result['jinhua'] ?? 0 ?></span>
-                    金花数
+                    金花
                 </li>
                 <li class="list-group-item">
                     <span class="badge"><?= $model->result['shunzi'] ?? 0 ?></span>
-                    顺子数
+                    顺子
                 </li>
                 <li class="list-group-item">
                     <span class="badge"><?= $model->result['duizi'] ?? 0 ?></span>
-                    对子数
+                    对子
                 </li>
                 <li class="list-group-item">
                     <span class="badge"><?= $model->result['shanpai'] ?? 0 ?></span>
-                    散牌数
+                    散牌
                 </li>
             </ul>
             <div class="form-group">
