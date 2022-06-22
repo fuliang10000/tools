@@ -52,7 +52,7 @@ $this->title = '体彩随机号';
                 </li>
             </ul>
             <div class="form-group">
-                <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-lg', 'name' => 'sportsLottery-button']) ?>
+                <?= Html::submitButton('点击生成', ['class' => 'btn btn-primary btn-lg', 'name' => 'sportsLottery-button']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>
