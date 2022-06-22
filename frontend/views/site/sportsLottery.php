@@ -20,7 +20,7 @@ $this->title = '体彩随机号';
 <div class="site-sportsLottery">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>门店机打号从来没中过？到此生成随机号，祝君早日财务自由</p>
+    <p>机打号从来没中过？到此生成随机号，祝君早日财务自由</p>
 
     <div class="row">
         <div class="col-lg-5">

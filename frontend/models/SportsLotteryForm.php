@@ -12,8 +12,8 @@ class SportsLotteryForm extends Model
     public $result = [
         'listThree' => [0, 0, 0],
         'listFive' => [0, 0, 0, 0, 0],
-        'sevenStar' => [0, 0, 0, 0, 0, 0, 3],
-        'bigHappy' => [0, 0, 0, 0, 0, 1, 2],
+        'sevenStar' => [0, 0, 0, 0, 0, 0, 0],
+        'bigHappy' => [0, 0, 0, 0, 0, 0, 0],
     ];
 
     /**
