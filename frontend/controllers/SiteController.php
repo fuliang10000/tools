@@ -31,6 +31,7 @@ class SiteController extends Controller
             }
             $model->result = $baseChange->result;
         }
+        ob_clean();
         return $this->render('baseChange', [
             'model' => $model,
             'changeList' => $model::$_changeList,
@@ -53,6 +54,7 @@ class SiteController extends Controller
                 Yii::$app->session->setFlash('error', '图片有误，请重新选择并上传');
             }
         }
+        ob_clean();
         return $this->render('grayImage', [
             'model' => $model,
         ]);
