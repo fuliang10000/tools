@@ -37,9 +37,9 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => '进制转换', 'url' => ['/site/base-change']],
         ['label' => '彩图转灰图', 'url' => ['/site/gray-image']],
+        ['label' => '金花概率', 'url' => ['/site/king-hua']],
         ['label' => '体彩随机号', 'url' => ['/site/sports-lottery']],
         ['label' => '福彩随机号', 'url' => ['/site/welfare-lottery']],
-        ['label' => '金花概率', 'url' => ['/site/king-hua']],
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
