@@ -8,9 +8,12 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => '小工具',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'language' => 'zh-CN',
+    'timeZone' => 'Asia/Shanghai',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -36,14 +39,16 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'suffix' => '.html',
+            'rules' => [],
         ],
-        */
+        'assetManager' => [
+            'appendTimestamp' => true, //实测对性能有影响
+            'linkAssets' => false, // 刷新后就可以清除缓存
+        ],
     ],
     'params' => $params,
 ];
