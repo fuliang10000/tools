@@ -16,9 +16,9 @@ class BaseChange extends Base
         } elseif (substr($change, 0, 3) == 'bin') {
             $pattern = '/^[01]+$/';
         } elseif (substr($change, 0, 3) == 'oct') {
-            $pattern = '/^[01234567]+$/';
+            $pattern = '/^[0-7]+$/';
         } elseif (substr($change, 0, 3) == 'hex') {
-            $pattern = '/^[\abcdef]+$/i';
+            $pattern = '/^[0-9abcdef]+$/i';
         } else {
             $this->code = 500;
             $this->message = '无效的转换规则';
