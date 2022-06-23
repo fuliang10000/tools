@@ -5,10 +5,12 @@ use frontend\business\BaseChange;
 use frontend\business\GrayImage;
 use frontend\business\KingHua;
 use frontend\business\SportsLottery;
+use frontend\business\WelfareLottery;
 use frontend\models\BaseChangeForm;
 use frontend\models\KingHuaForm;
 use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
+use frontend\models\WelfareLotteryForm;
 use Yii;
 use yii\web\Controller;
 use yii\web\UploadedFile;
@@ -94,6 +96,23 @@ class SiteController extends Controller
         }
         ob_clean();
         return $this->render('sportsLottery', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionWelfareLottery()
+    {
+        $model = new WelfareLotteryForm();
+        if (Yii::$app->request->isPost) {
+            $welfareLottery = new WelfareLottery();
+            $welfareLottery->welfareLotteryMake();
+            if ($welfareLottery->code !== 200) {
+                Yii::$app->session->setFlash('error', $welfareLottery->message);
+            }
+            $model->result = $welfareLottery->result;
+        }
+        ob_clean();
+        return $this->render('welfareLottery', [
             'model' => $model,
         ]);
     }

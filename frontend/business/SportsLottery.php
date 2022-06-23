@@ -2,8 +2,6 @@
 
 namespace frontend\business;
 
-use frontend\models\KingHuaForm;
-
 class SportsLottery extends Base
 {
     public function sportsLotteryMake(): void
