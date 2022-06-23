@@ -20,6 +20,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <meta name="keywords" content="进制转换, 彩图转灰图, 金花概率, 彩票机选号码" />
+    <meta name="description" content="完全免费好用的工具盒, 各种进制转换, 彩色头像转灰色头像, 金花各类牌的出牌数出牌概率, 自动生成彩票机选号码, 提高彩票中奖率" />
     <?php $this->head() ?>
 </head>
 <body>
