@@ -36,7 +36,7 @@ class BaseChange extends Base
         } elseif ($change == "octbin") {
             $this->result = base_convert($num, 8, 2);
         } elseif ($change == "octhex") {
-            $this->result = base_convert($num, 8, 6);
+            $this->result = base_convert($num, 8, 16);
         } elseif ($change == "hexbin") {
             $this->result = base_convert($num, 16, 2);
         } elseif ($change == "hexoct") {
