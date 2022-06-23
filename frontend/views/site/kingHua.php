@@ -9,6 +9,11 @@ use yii\bootstrap\ActiveForm;
 
 $this->title = '金花概率';
 ?>
+<style>
+    .badge {
+        background-color: #337ab7;
+    }
+</style>
 <div class="site-kingHua">
     <h1><?= Html::encode($this->title) ?></h1>
 
