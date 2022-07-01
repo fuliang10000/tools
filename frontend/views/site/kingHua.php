@@ -17,7 +17,7 @@ $this->title = '金花概率';
 <div class="site-kingHua">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>根据人数和把数，计算各类牌的出牌数</p>
+    <p>根据人数和把数，计算各类牌的出牌概率</p>
 
     <div class="row">
         <div class="col-lg-5">
