@@ -105,14 +105,15 @@ class KingHua extends Base
             --$ba;
         }
 
-        $totalBa = $peopleCli * $ba * 100;
+        $totalBa = $form->people * $form->ba;
+        var_dump($totalBa);
         $this->result = [
-            'shanpai' => $shanpai . ' （' . $shanpai / $totalBa . '%）',
-            'duizi' => $duizi . ' （' . $duizi / $totalBa . '%）',
-            'shunzi' => $shunzi . ' （' . $shunzi / $totalBa . '%）',
-            'jinhua' => $jinhua . ' （' . $jinhua / $totalBa . '%）',
-            'shunjin' => $shunjin . ' （' . $shunjin / $totalBa . '%）',
-            'baozi' => $baozi . ' （' . $baozi / $totalBa . '%）',
+            'shanpai' => $shanpai . ' （' . sprintf("%.2f", $shanpai / $totalBa * 100) . '%）',
+            'duizi' => $duizi . ' （' . sprintf("%.2f", $duizi / $totalBa * 100) . '%）',
+            'shunzi' => $shunzi . ' （' . sprintf("%.2f", $shunzi / $totalBa * 100) . '%）',
+            'jinhua' => $jinhua . ' （' . sprintf("%.2f", $jinhua / $totalBa * 100) . '%）',
+            'shunjin' => $shunjin . ' （' . sprintf("%.2f", $shunjin / $totalBa * 100) . '%）',
+            'baozi' => $baozi . ' （' . sprintf("%.2f", $baozi / $totalBa * 100) . '%）',
         ];
     }
 }
