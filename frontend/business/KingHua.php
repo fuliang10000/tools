@@ -105,13 +105,14 @@ class KingHua extends Base
             --$ba;
         }
 
+        $totalBa = $peopleCli * $ba * 100;
         $this->result = [
-            'shanpai' => $shanpai,
-            'duizi' => $duizi,
-            'shunzi' => $shunzi,
-            'jinhua' => $jinhua,
-            'shunjin' => $shunjin,
-            'baozi' => $baozi,
+            'shanpai' => $shanpai . ' （' . $shanpai / $totalBa . '%）',
+            'duizi' => $duizi . ' （' . $duizi / $totalBa . '%）',
+            'shunzi' => $shunzi . ' （' . $shunzi / $totalBa . '%）',
+            'jinhua' => $jinhua . ' （' . $jinhua / $totalBa . '%）',
+            'shunjin' => $shunjin . ' （' . $shunjin / $totalBa . '%）',
+            'baozi' => $baozi . ' （' . $baozi / $totalBa . '%）',
         ];
     }
 }
