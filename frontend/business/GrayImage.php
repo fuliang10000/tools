@@ -2,7 +2,9 @@
 
 namespace frontend\business;
 
+use crazyfd\qiniu\Qiniu;
 use frontend\models\UploadImageForm;
+use Yii;
 
 class GrayImage extends Base
 {
@@ -60,7 +62,7 @@ class GrayImage extends Base
                 imagesetpixel($image, $x, $y, ImageColorAllocate($image, $gray, $gray, $gray));
             }
         }
-        $fileName = 'gray_' . time() . rand(1000, 9999) . '.' . $imgType;
+        $fileName = 'gray_' . time() . rand(100000, 999999) . '.' . $imgType;
         $filePath = '/uploads/' . date('Ymd') . '/';
         $grayPath = \Yii::getAlias('@webroot') . $filePath;
         if (!is_dir($grayPath)) {
@@ -70,6 +72,23 @@ class GrayImage extends Base
         $func($image, $grayPath);
         imagedestroy($image);
 
-        return $filePath . $fileName;
+        return $this->uploadToQiniu($grayPath);
+    }
+
+    /**
+     * 上传到七牛云
+     * @param string $filePath
+     * @param string $dir
+     * @return string
+     * @throws \Exception
+     */
+    public function uploadToQiniu(string $filePath, string $dir = 'gray-images'): string
+    {
+        $temp = explode('/', $filePath);
+        $fileName = end($temp);
+        $qiniu = new Qiniu(\Yii::$app->params['qiniu_config']['ak'], Yii::$app->params['qiniu_config']['sk'], Yii::$app->params['qiniu_config']['domain'], Yii::$app->params['qiniu_config']['bucket']);
+        $qiniu->uploadFile($filePath, $dir . '/' . $fileName);
+
+        return 'http://' . $qiniu->getLink($dir . '/' . $fileName);
     }
 }
