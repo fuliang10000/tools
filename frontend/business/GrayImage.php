@@ -33,7 +33,7 @@ class GrayImage extends Base
             $grayPath = $this->grayImg($form->file->tempName, $imgType);
             if (!$grayPath) throw new \Exception('生成图片失败');
 
-            $this->result = $grayPath;
+            $this->result = str_replace('https://', 'http://', $grayPath);
 
         } catch (\Exception $ex) {
             $this->code = 500;
