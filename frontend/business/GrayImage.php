@@ -72,22 +72,24 @@ class GrayImage extends Base
         $func($image, $grayPath);
         imagedestroy($image);
 
-        return $this->uploadToQiniu($grayPath);
+        return $this->uploadToQiniu($grayPath, true);
     }
 
     /**
      * 上传到七牛云
      * @param string $filePath
+     * @param bool $deleteSource
      * @param string $dir
      * @return string
      * @throws \Exception
      */
-    public function uploadToQiniu(string $filePath, string $dir = 'gray-images'): string
+    public function uploadToQiniu(string $filePath, bool $deleteSource = false, string $dir = 'gray-images'): string
     {
         $temp = explode('/', $filePath);
         $fileName = end($temp);
         $qiniu = new Qiniu(\Yii::$app->params['qiniu_config']['ak'], Yii::$app->params['qiniu_config']['sk'], Yii::$app->params['qiniu_config']['domain'], Yii::$app->params['qiniu_config']['bucket']);
         $qiniu->uploadFile($filePath, $dir . '/' . $fileName);
+        if ($deleteSource) @unlink($filePath);
 
         return 'http://' . $qiniu->getLink($dir . '/' . $fileName);
     }
