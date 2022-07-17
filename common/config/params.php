@@ -7,7 +7,7 @@ return [
     'user.passwordResetTokenExpire' => 3600,
     'ICP_CODE' => '蜀ICP备2020037144号',
     'qiniu_config' => [
-        'domain' => 'tool.yimuyuan.xin',
+        'domain' => 'cdn.yimuyuan.xin',
         'ak' => 'lcm9geiBRO7G9KePmiGRG8tDAqbEY7Aqzgb3Z4p6',
         'sk' => 'Z2dqvRExvtf_YfK8aP4yiqNMQjRopqfIRF_AQSwG',
         'bucket' => 'yimuyuan',
