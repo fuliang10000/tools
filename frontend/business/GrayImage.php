@@ -88,9 +88,9 @@ class GrayImage extends Base
         $temp = explode('/', $filePath);
         $fileName = end($temp);
         $qiniu = new Qiniu(\Yii::$app->params['qiniu_config']['ak'], Yii::$app->params['qiniu_config']['sk'], Yii::$app->params['qiniu_config']['domain'], Yii::$app->params['qiniu_config']['bucket']);
-        $qiniu->uploadFile($filePath, $dir . '/' . $fileName);
+        $qiniu->uploadFile($filePath, $dir . '/' . date('Ymd') . '/' . $fileName);
         if ($deleteSource) @unlink($filePath);
 
-        return 'http://' . $qiniu->getLink($dir . '/' . $fileName);
+        return 'http://' . $qiniu->getLink($dir . '/' . date('Ymd') . '/' . $fileName);
     }
 }
