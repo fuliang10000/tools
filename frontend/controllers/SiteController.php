@@ -48,6 +48,7 @@ class SiteController extends Controller
     {
         $model = new UploadImageForm();
         if (Yii::$app->request->isPost) {
+            set_time_limit(0);
             $model->file = UploadedFile::getInstance($model, 'file');
             if ($model->file && $model->validate()) {
                 $grayImage = new GrayImage();
