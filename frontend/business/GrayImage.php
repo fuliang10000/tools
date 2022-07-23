@@ -54,13 +54,8 @@ class GrayImage extends Base
                 break;
 
         }
-        $img_width = ImageSX($image);
-        $img_height = ImageSY($image);
-        for ($y = 0; $y < $img_height; $y++) {
-            for ($x = 0; $x < $img_width; $x++) {
-                $gray = (ImageColorAt($image, $x, $y) >> 8) & 0xFF;
-                imagesetpixel($image, $x, $y, ImageColorAllocate($image, $gray, $gray, $gray));
-            }
+        if (! imagefilter($image,IMG_FILTER_GRAYSCALE)) {
+            return '';
         }
         $fileName = 'gray_' . time() . rand(100000, 999999) . '.' . $imgType;
         $filePath = '/uploads/' . date('Ymd') . '/';
