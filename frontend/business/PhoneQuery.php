@@ -17,7 +17,7 @@ class PhoneQuery extends Base
             'Content-Type' => 'application/json;charset=UTF-8',
         ];
         $response = $this->sendRequest($url, 'POST', [], $headers);
-        if ($response) {
+        if (! empty($response['data'])) {
             $address = [
                 $response['data']['types'] ?: '未知',
                 $response['data']['prov'] ?: '未知',
@@ -26,7 +26,7 @@ class PhoneQuery extends Base
             $this->result = implode('-', $address);
         } else {
             $this->code = 500;
-            $this->result = '查询失败，请稍后重试或联系站长。';
+            $this->message = $response['msg'] ?: '查询失败，请稍后重试或联系站长。';
         }
     }
 }

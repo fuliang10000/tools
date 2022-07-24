@@ -38,7 +38,7 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => '进制转换', 'url' => ['/site/base-change']],
-        ['label' => 'IP归属地查询', 'url' => ['/site/ip-query']],
+        ['label' => 'IP地址归属地查询', 'url' => ['/site/ip-query']],
         ['label' => '手机号归属地查询', 'url' => ['/site/phone-query']],
         ['label' => '彩图转灰图', 'url' => ['/site/gray-image']],
         ['label' => '金花概率', 'url' => ['/site/king-hua']],
