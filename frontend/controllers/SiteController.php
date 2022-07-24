@@ -1,13 +1,18 @@
 <?php
+
 namespace frontend\controllers;
 
 use frontend\business\BaseChange;
 use frontend\business\GrayImage;
+use frontend\business\IpQuery;
 use frontend\business\KingHua;
+use frontend\business\PhoneQuery;
 use frontend\business\SportsLottery;
 use frontend\business\WelfareLottery;
 use frontend\models\BaseChangeForm;
+use frontend\models\IpQueryForm;
 use frontend\models\KingHuaForm;
+use frontend\models\PhoneQueryForm;
 use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
 use frontend\models\WelfareLotteryForm;
@@ -41,6 +46,40 @@ class SiteController extends Controller
         return $this->render('baseChange', [
             'model' => $model,
             'changeList' => $model::$_changeList,
+        ]);
+    }
+
+    public function actionIpQuery()
+    {
+        $model = new IpQueryForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $ipQuery = new IpQuery();
+            $ipQuery->ipQueryMake($model);
+            if ($ipQuery->code !== 200) {
+                Yii::$app->session->setFlash('error', $ipQuery->message);
+            }
+            $model->result = $ipQuery->result;
+        }
+        ob_clean();
+        return $this->render('ipQuery', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionPhoneQuery()
+    {
+        $model = new PhoneQueryForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $phoneQuery = new PhoneQuery();
+            $phoneQuery->phoneQueryMake($model);
+            if ($phoneQuery->code !== 200) {
+                Yii::$app->session->setFlash('error', $phoneQuery->message);
+            }
+            $model->result = $phoneQuery->result;
+        }
+        ob_clean();
+        return $this->render('phoneQuery', [
+            'model' => $model,
         ]);
     }
 
