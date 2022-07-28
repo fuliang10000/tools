@@ -7,7 +7,7 @@ use Yii;
 class BaseController extends Controller
 {
     const WITHIN_TIME = 60;//时间，单位：秒
-    const MAX_REQUEST_LIMIT = 10; //最大请求次数
+    const MAX_REQUEST_LIMIT = 100; //最大请求次数
     const CACHE_PREFIX = 'tools:request_count:';
 
     public function beforeAction($action)
@@ -17,7 +17,7 @@ class BaseController extends Controller
         }
 
         // 限流
-        $cacheKey = self::CACHE_PREFIX . md5(getclientip());
+        $cacheKey = self::CACHE_PREFIX . getclientip();
         $redisClient = Yii::$app->redis;
         if ($redisClient->exists($cacheKey)) {
             $count = $redisClient->get($cacheKey);
