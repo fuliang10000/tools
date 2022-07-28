@@ -17,13 +17,12 @@ use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
 use frontend\models\WelfareLotteryForm;
 use Yii;
-use yii\web\Controller;
 use yii\web\UploadedFile;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BaseController
 {
 
     public function actionIndex()

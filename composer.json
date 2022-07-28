@@ -45,6 +45,14 @@
             "yiisoft/yii2-composer": true
         }
     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "common/"
+        },
+        "files": [
+            "common/components/function.php"
+        ]
+    },
     "repositories": [
         {
             "type": "composer",
