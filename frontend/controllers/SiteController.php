@@ -155,4 +155,35 @@ class SiteController extends BaseController
             'model' => $model,
         ]);
     }
+
+    public function actionUpload()
+    {
+        if (Yii::$app->request->isPost) {
+            $fileName = Yii::$app->request->post('filename');
+            $lastOne = Yii::$app->request->post('lastone', 0);
+            $blobName = Yii::$app->request->post('blobname', 0);
+            $dir = Yii::getAlias('@webroot') . '/uploads/tmp/' . md5($fileName);
+            file_exists($dir) or mkdir($dir, 0777, true);
+
+            $path = $dir . '/' . $blobName;
+            $file = UploadedFile::getInstance(Yii::$container->get(UploadImageForm::class), 'file');
+            move_uploaded_file($file->tempName, $path);
+
+            if ($lastOne) {
+                $count = $lastOne;
+                $filePath = Yii::getAlias('@webroot') . '/uploads/' . date('Ymd');
+                file_exists($filePath) or mkdir($filePath, 0777, true);
+                $fp = fopen($filePath . '/' . $fileName, "abw");
+                for ($i = 0; $i <= $count; $i++) {
+                    $handle = fopen($dir . "/" . $i, "rb");
+                    fwrite($fp, fread($handle, filesize($dir . "/" . $i)));
+                    fclose($handle);
+                }
+                fclose($fp);
+            }
+
+            return json_encode(['code' => 0, 'msg' => 'success']);
+        }
+        return $this->renderPartial('upload');
+    }
 }
