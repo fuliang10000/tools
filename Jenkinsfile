@@ -1,40 +1,23 @@
 pipeline {
-    agent none
+    agent any
     stages {
         stage('Build') {
-            agent any
             steps {
-                checkout scm
-                sh 'make'
-                stash includes: '**/target/*.jar', name: 'app'
+                // 安装和更新composer包
+                sh "docker exec -it php74 /bin/bash -c 'composer install -o -vvv'"
+                // 初始化环境
+                sh "docker exec -it php74 /bin/bash -c 'php /var/lib/jenkins/workspace/tools_test/init --env=Development --overwrite=a'"
             }
         }
-        stage('Test on Linux') {
-            agent {
-                label 'linux'
-            }
+        stage('Test') {
             steps {
-                unstash 'app'
-                sh 'make check'
-            }
-            post {
-                always {
-                    junit '**/target/*.xml'
-                }
+                // 清缓存
+                echo "docker exec -it php74 /bin/bash -c 'php /var/lib/jenkins/workspace/tools_test/yii cache/flush-all'"
             }
         }
-        stage('Test on Windows') {
-            agent {
-                label 'windows'
-            }
+        stage('Deploy') {
             steps {
-                unstash 'app'
-                bat 'make check'
-            }
-            post {
-                always {
-                    junit '**/target/*.xml'
-                }
+                echo 'Deploying....'
             }
         }
     }
