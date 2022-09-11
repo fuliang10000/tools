@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 // 安装和更新composer包
-                sh "docker exec -i php74 /bin/bash -c 'composer install -o -vvv'"
+                sh "docker exec -i php74 /bin/bash -c 'cd /var/lib/jenkins/workspace/tools_master && composer install -o -vvv'"
                 // 初始化环境
                 sh "docker exec -i php74 /bin/bash -c 'php /var/lib/jenkins/workspace/tools_master/init --env=Production --overwrite=a'"
             }
