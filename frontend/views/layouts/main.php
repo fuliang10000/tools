@@ -20,8 +20,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <meta name="keywords" content="进制转换, 彩图转灰图, 金花概率, 彩票机选号码, ip归属地查询, 手机号归属地查询" />
-    <meta name="description" content="完全免费好用的工具盒, 各种进制转换, ip地址归属地查询, 手机号归属地查询, 彩色头像转灰色头像, 金花各类牌的出牌数出牌概率, 自动生成彩票机选号码, 提高彩票中奖率" />
+    <meta name="keywords" content="进制转换, 彩图转灰图, 金花概率, 彩票机选号码, ip归属地查询, 手机号归属地查询, 身份证归属地查询" />
+    <meta name="description" content="完全免费好用的工具盒, 各种进制转换, ip地址归属地查询, 手机号归属地查询, 身份证归属地查询, 彩色头像转灰色头像, 金花各类牌的出牌数出牌概率, 自动生成彩票机选号码, 提高彩票中奖率" />
     <?php $this->head() ?>
 </head>
 <body>
@@ -40,6 +40,7 @@ AppAsset::register($this);
         ['label' => '进制转换', 'url' => ['/site/base-change']],
         ['label' => 'IP地址归属地查询', 'url' => ['/site/ip-query']],
         ['label' => '手机号归属地查询', 'url' => ['/site/phone-query']],
+        ['label' => '身份证归属地查询', 'url' => ['/site/idcard-query']],
         ['label' => '彩图转灰图', 'url' => ['/site/gray-image']],
         ['label' => '金花概率', 'url' => ['/site/king-hua']],
         ['label' => '体彩随机号', 'url' => ['/site/sports-lottery']],

@@ -4,12 +4,14 @@ namespace frontend\controllers;
 
 use frontend\business\BaseChange;
 use frontend\business\GrayImage;
+use frontend\business\IdcardQuery;
 use frontend\business\IpQuery;
 use frontend\business\KingHua;
 use frontend\business\PhoneQuery;
 use frontend\business\SportsLottery;
 use frontend\business\WelfareLottery;
 use frontend\models\BaseChangeForm;
+use frontend\models\IdcardQueryForm;
 use frontend\models\IpQueryForm;
 use frontend\models\KingHuaForm;
 use frontend\models\PhoneQueryForm;
@@ -80,6 +82,24 @@ class SiteController extends BaseController
         }
         ob_clean();
         return $this->render('phoneQuery', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionIdcardQuery(): string
+    {
+        $model = new IdcardQueryForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $idcardQuery = new IdcardQuery();
+            $idcardQuery->idcardQueryMake($model);
+            if ($idcardQuery->code !== 200) {
+                Yii::$app->session->setFlash('error', $idcardQuery->message);
+            }
+            $model->address = $idcardQuery->result['address'];
+            $model->sex = $idcardQuery->result['sex'];
+        }
+        ob_clean();
+        return $this->render('idcardQuery', [
             'model' => $model,
         ]);
     }
