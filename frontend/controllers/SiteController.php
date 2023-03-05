@@ -30,7 +30,7 @@ class SiteController extends BaseController
         return $this->render('index');
     }
 
-    public function actionBaseChange()
+    public function actionBaseChange(): string
     {
         $model = new BaseChangeForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -48,7 +48,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionIpQuery()
+    public function actionIpQuery(): string
     {
         $model = new IpQueryForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -65,7 +65,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionPhoneQuery()
+    public function actionPhoneQuery(): string
     {
         $model = new PhoneQueryForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -82,7 +82,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionGrayImage()
+    public function actionGrayImage(): string
     {
         $model = new UploadImageForm();
         if (Yii::$app->request->isPost) {
@@ -105,7 +105,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionKingHua()
+    public function actionKingHua(): string
     {
         $model = new KingHuaForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -122,7 +122,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionSportsLottery()
+    public function actionSportsLottery(): string
     {
         $model = new SportsLotteryForm();
         if (Yii::$app->request->isPost) {
@@ -139,7 +139,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionWelfareLottery()
+    public function actionWelfareLottery(): string
     {
         $model = new WelfareLotteryForm();
         if (Yii::$app->request->isPost) {
@@ -156,7 +156,7 @@ class SiteController extends BaseController
         ]);
     }
 
-    public function actionUpload()
+    public function actionUpload(): string
     {
         if (Yii::$app->request->isPost) {
             $fileName = Yii::$app->request->post('filename');
