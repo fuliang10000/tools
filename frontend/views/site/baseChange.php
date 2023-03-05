@@ -23,7 +23,7 @@ $this->title = '进制转换';
 
             <?= $form->field($model, 'num') ?>
 
-            <?= $form->field($model, 'result') ?>
+            <?= $form->field($model, 'result')->textInput(['readonly' => true]); ?>
 
             <div class="form-group">
                 <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-lg', 'name' => 'baseChange-button']) ?>

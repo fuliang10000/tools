@@ -21,7 +21,7 @@ $this->title = 'ip地址归属地查询';
 
             <?= $form->field($model, 'ip') ?>
 
-            <?= $form->field($model, 'result') ?>
+            <?= $form->field($model, 'result')->textInput(['readonly' => true]); ?>
 
             <div class="form-group">
                 <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-lg', 'name' => 'ipQuery-button']) ?>

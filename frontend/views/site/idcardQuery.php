@@ -20,9 +20,9 @@ $this->title = '身份证归属地查询';
 
             <?= $form->field($model, 'idcard') ?>
 
-            <?= $form->field($model, 'address') ?>
+            <?= $form->field($model, 'address')->textInput(['readonly' => true]); ?>
 
-            <?= $form->field($model, 'sex') ?>
+            <?= $form->field($model, 'sex')->textInput(['readonly' => true]); ?>
 
             <div class="form-group">
                 <?= Html::submitButton('提交', ['class' => 'btn btn-primary btn-lg', 'name' => 'idcardQuery-button']) ?>
