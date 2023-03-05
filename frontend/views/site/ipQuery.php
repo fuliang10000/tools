@@ -12,6 +12,7 @@ $this->title = 'ip地址归属地查询';
 <div class="site-ipQuery">
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <p>本地IP：<b style="color: red;"><?= $ip; ?></b></p>
     <p>输入一个有效的ip地址，查询ip地址的归属地。</p>
 
     <div class="row">

@@ -60,8 +60,10 @@ class SiteController extends BaseController
             $model->result = $ipQuery->result;
         }
         ob_clean();
+        $ip = getclientip();
         return $this->render('ipQuery', [
             'model' => $model,
+            'ip' => $ip,
         ]);
     }
 
