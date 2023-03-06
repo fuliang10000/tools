@@ -29,4 +29,9 @@ return [
             'requestUrl' => 'https://qryidcard.api.bdymkt.com/lundear/qryidcard',
         ],
     ],
+    'roll_tool_api' => [
+        'app_id' => 'hicmmmoeqnrpgcuj',
+        'app_secret' => 'WlBuMXFQK0RRRXYzei9SdUltTmxoUT09',
+        'lottery_url' => 'https://www.mxnzp.com/api/lottery/common/aim_lottery',
+    ],
 ];
