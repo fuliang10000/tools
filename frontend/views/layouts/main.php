@@ -45,6 +45,7 @@ AppAsset::register($this);
         ['label' => '金花概率', 'url' => ['/site/king-hua']],
         ['label' => '体彩随机号', 'url' => ['/site/sports-lottery']],
         ['label' => '福彩随机号', 'url' => ['/site/welfare-lottery']],
+        ['label' => '域名备案信息', 'url' => ['/site/domain-query']],
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

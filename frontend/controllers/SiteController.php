@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use frontend\business\BaseChange;
+use frontend\business\DomainQuery;
 use frontend\business\GrayImage;
 use frontend\business\IdcardQuery;
 use frontend\business\IpQuery;
@@ -15,6 +16,7 @@ use frontend\models\IdcardQueryForm;
 use frontend\models\IpQueryForm;
 use frontend\models\KingHuaForm;
 use frontend\models\PhoneQueryForm;
+use frontend\models\DomainQueryForm;
 use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
 use frontend\models\WelfareLotteryForm;
@@ -99,9 +101,10 @@ class SiteController extends BaseController
             $idcardQuery->idcardQueryMake($model);
             if ($idcardQuery->code !== 200) {
                 Yii::$app->session->setFlash('error', $idcardQuery->message);
+            } else {
+                $model->address = $idcardQuery->result['address'];
+                $model->sex = $idcardQuery->result['sex'];
             }
-            $model->address = $idcardQuery->result['address'];
-            $model->sex = $idcardQuery->result['sex'];
         }
         ob_clean();
         return $this->render('idcardQuery', [
@@ -212,5 +215,25 @@ class SiteController extends BaseController
             return json_encode(['code' => 0, 'msg' => 'success']);
         }
         return $this->renderPartial('upload');
+    }
+
+    public function actionDomainQuery(): string
+    {
+        $model = new DomainQueryForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $domainQuery = new DomainQuery();
+            $domainQuery->domainQueryMake($model);
+            if ($domainQuery->code !== 200) {
+                Yii::$app->session->setFlash('error', $domainQuery->message);
+            } else {
+                $model->unit = $domainQuery->result['unit'];
+                $model->icpCode = $domainQuery->result['icpCode'];
+                $model->passTime = $domainQuery->result['passTime'];
+            }
+        }
+        ob_clean();
+        return $this->render('domainQuery', [
+            'model' => $model,
+        ]);
     }
 }
