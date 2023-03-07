@@ -43,6 +43,7 @@ AppAsset::register($this);
             'label' => '开发工具',
             'items' => [
                 ['label' => '进制转换', 'url' => ['/site/base-change']],
+                ['label' => '运行PHP代码', 'url' => ['/site/run-php-code']],
                 ['label' => 'URL生成短链接', 'url' => ['/site/short-link']],
             ],
         ],

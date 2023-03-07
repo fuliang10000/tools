@@ -18,6 +18,7 @@ use frontend\models\IpQueryForm;
 use frontend\models\KingHuaForm;
 use frontend\models\PhoneQueryForm;
 use frontend\models\DomainQueryForm;
+use frontend\models\RunPhpCodeForm;
 use frontend\models\ShortLinkForm;
 use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
@@ -242,6 +243,24 @@ class SiteController extends BaseController
             $model->result = $shortLink->result;
         }
         return $this->render('shortLink', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionRunPhpCode(): string
+    {
+        $model = new RunPhpCodeForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $filePath = Yii::getAlias('@webroot') . '/php_code/test.php';
+            $phpCode = '<?php' . PHP_EOL . $model->code;
+            file_put_contents($filePath, $phpCode);
+            $result = shell_exec('php ' . $filePath);
+            if ($result === NULL) {
+                Yii::$app->session->setFlash('error', '源代码语法有误，请检查后重试。');
+            }
+            $model->result = $result ?? '';
+        }
+        return $this->render('runPhpCode', [
             'model' => $model,
         ]);
     }
