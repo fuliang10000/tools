@@ -29,7 +29,7 @@ class RunPhpCodeForm extends Model
     {
         return [
             'code' => 'php源代码',
-            'result' => '输出结果',
+            'result' => '运行结果',
         ];
     }
 }

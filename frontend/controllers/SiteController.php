@@ -257,8 +257,10 @@ class SiteController extends BaseController
             $result = shell_exec('php ' . $filePath);
             if ($result === NULL) {
                 Yii::$app->session->setFlash('error', '源代码语法有误，请检查后重试。');
+            } else {
+                $result = str_replace($filePath, '', $result);
+                $model->result = $result;
             }
-            $model->result = $result ?? '';
         }
         return $this->render('runPhpCode', [
             'model' => $model,
