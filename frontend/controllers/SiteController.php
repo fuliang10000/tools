@@ -9,6 +9,7 @@ use frontend\business\IdcardQuery;
 use frontend\business\IpQuery;
 use frontend\business\KingHua;
 use frontend\business\PhoneQuery;
+use frontend\business\ShortLink;
 use frontend\business\SportsLottery;
 use frontend\business\WelfareLottery;
 use frontend\models\BaseChangeForm;
@@ -17,6 +18,7 @@ use frontend\models\IpQueryForm;
 use frontend\models\KingHuaForm;
 use frontend\models\PhoneQueryForm;
 use frontend\models\DomainQueryForm;
+use frontend\models\ShortLinkForm;
 use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
 use frontend\models\WelfareLotteryForm;
@@ -50,7 +52,6 @@ class SiteController extends BaseController
             }
             $model->result = $baseChange->result;
         }
-        ob_clean();
         return $this->render('baseChange', [
             'model' => $model,
             'changeList' => $model::$_changeList,
@@ -68,7 +69,6 @@ class SiteController extends BaseController
             }
             $model->result = $ipQuery->result;
         }
-        ob_clean();
         $ip = getclientip();
         return $this->render('ipQuery', [
             'model' => $model,
@@ -87,7 +87,6 @@ class SiteController extends BaseController
             }
             $model->result = $phoneQuery->result;
         }
-        ob_clean();
         return $this->render('phoneQuery', [
             'model' => $model,
         ]);
@@ -106,7 +105,6 @@ class SiteController extends BaseController
                 $model->sex = $idcardQuery->result['sex'];
             }
         }
-        ob_clean();
         return $this->render('idcardQuery', [
             'model' => $model,
         ]);
@@ -129,7 +127,6 @@ class SiteController extends BaseController
                 Yii::$app->session->setFlash('error', '图片有误，请重新选择并上传');
             }
         }
-        ob_clean();
         return $this->render('grayImage', [
             'model' => $model,
         ]);
@@ -146,7 +143,6 @@ class SiteController extends BaseController
             }
             $model->result = $kingHua->result;
         }
-        ob_clean();
         return $this->render('kingHua', [
             'model' => $model,
         ]);
@@ -163,7 +159,6 @@ class SiteController extends BaseController
             }
             $model->result = $sportsLottery->result;
         }
-        ob_clean();
         return $this->render('sportsLottery', [
             'model' => $model,
         ]);
@@ -180,7 +175,6 @@ class SiteController extends BaseController
             }
             $model->result = $welfareLottery->result;
         }
-        ob_clean();
         return $this->render('welfareLottery', [
             'model' => $model,
         ]);
@@ -231,8 +225,23 @@ class SiteController extends BaseController
                 $model->passTime = $domainQuery->result['passTime'];
             }
         }
-        ob_clean();
         return $this->render('domainQuery', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionShortLink(): string
+    {
+        $model = new ShortLinkForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $shortLink = new ShortLink();
+            $shortLink->shortLinkMake($model);
+            if ($shortLink->code !== 200) {
+                Yii::$app->session->setFlash('error', $shortLink->message);
+            }
+            $model->result = $shortLink->result;
+        }
+        return $this->render('shortLink', [
             'model' => $model,
         ]);
     }

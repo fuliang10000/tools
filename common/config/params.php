@@ -33,5 +33,6 @@ return [
         'app_id' => 'hicmmmoeqnrpgcuj',
         'app_secret' => 'WlBuMXFQK0RRRXYzei9SdUltTmxoUT09',
         'beian_url' => 'https://www.mxnzp.com/api/beian/search',
+        'short_link' => 'https://www.mxnzp.com/api/shortlink/create',
     ],
 ];

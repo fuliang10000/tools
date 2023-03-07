@@ -46,6 +46,7 @@ AppAsset::register($this);
         ['label' => '体彩随机号', 'url' => ['/site/sports-lottery']],
         ['label' => '福彩随机号', 'url' => ['/site/welfare-lottery']],
         ['label' => '域名备案信息', 'url' => ['/site/domain-query']],
+        ['label' => 'URL生成短链接', 'url' => ['/site/short-link']],
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

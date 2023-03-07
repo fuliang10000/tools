@@ -5,9 +5,9 @@ use yii\httpclient\Client;
 use Yii;
 class Base
 {
-    public $code = 200;
-    public $message = '成功';
-    public $result;
+    public int $code = 200;
+    public string $message = '成功';
+    public mixed $result;
 
     /**
      * 发送http请求
