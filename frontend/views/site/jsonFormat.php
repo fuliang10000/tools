@@ -18,14 +18,14 @@ $this->title = 'json数据格式化';
         <?php $form = ActiveForm::begin(['id' => 'jsonFormat-form']); ?>
         <div class="col-lg-6 col-md-12">
 
-            <?= $form->field($model, 'json')->textarea(['rows' => 10]);?>
+            <?= $form->field($model, 'json')->textarea(['rows' => 15]);?>
 
             <div class="form-group">
                 <?= Html::submitButton('格式化', ['class' => 'btn btn-primary btn-lg', 'name' => 'jsonFormat-button']) ?>
             </div>
         </div>
         <div class="col-lg-6 col-md-12">
-            <?= $form->field($model, 'result')->textarea(['readonly' => true, 'rows' => 10]); ?>
+            <?= $form->field($model, 'result')->textarea(['readonly' => true, 'rows' => 15]); ?>
         </div>
         <?php ActiveForm::end(); ?>
     </div>
