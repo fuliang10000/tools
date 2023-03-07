@@ -45,6 +45,7 @@ AppAsset::register($this);
                 ['label' => '进制转换', 'url' => ['/site/base-change']],
                 ['label' => '运行PHP代码', 'url' => ['/site/run-php-code']],
                 ['label' => 'URL生成短链接', 'url' => ['/site/short-link']],
+                ['label' => 'json格式化', 'url' => ['/site/json-format']],
             ],
         ],
         ['label' => '彩图转灰图', 'url' => ['/site/gray-image']],

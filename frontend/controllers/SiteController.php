@@ -15,6 +15,7 @@ use frontend\business\WelfareLottery;
 use frontend\models\BaseChangeForm;
 use frontend\models\IdcardQueryForm;
 use frontend\models\IpQueryForm;
+use frontend\models\JsonFormatForm;
 use frontend\models\KingHuaForm;
 use frontend\models\PhoneQueryForm;
 use frontend\models\DomainQueryForm;
@@ -24,6 +25,8 @@ use frontend\models\SportsLotteryForm;
 use frontend\models\UploadImageForm;
 use frontend\models\WelfareLotteryForm;
 use Yii;
+use yii\base\InvalidArgumentException;
+use yii\helpers\Json;
 use yii\web\UploadedFile;
 
 /**
@@ -263,6 +266,22 @@ class SiteController extends BaseController
             }
         }
         return $this->render('runPhpCode', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionJsonFormat(): string
+    {
+        $model = new JsonFormatForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            try {
+                $arr = Json::decode($model->json);
+                $model->result = Json::encode($arr, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+            } catch (InvalidArgumentException $e) {
+                Yii::$app->session->setFlash('error', '请输入一段正确的json字符。');
+            }
+        }
+        return $this->render('jsonFormat', [
             'model' => $model,
         ]);
     }
