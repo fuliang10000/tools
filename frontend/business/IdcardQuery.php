@@ -10,13 +10,11 @@ class IdcardQuery extends Base
 
     public function idcardQueryMake(IdcardQueryForm $form): void
     {
-        $appCode = Yii::$app->params['baidu_cloud']['idcard_address']['AppCode'] ?? '';
-        $url = Yii::$app->params['baidu_cloud']['idcard_address']['requestUrl'] . '?idcard=' . $form->idcard;
-        $headers = [
-            'X-Bce-Signature' => 'AppCode/' . $appCode,
-            'Content-Type' => 'application/json;charset=UTF-8',
-        ];
-        $response = $this->sendRequest($url, 'GET', [], $headers);
+        $appId = Yii::$app->params['roll_tool_api']['app_id'] ?? '';
+        $appSecret = Yii::$app->params['roll_tool_api']['app_secret'] ?? '';
+        $apiUrl = Yii::$app->params['roll_tool_api']['idcard_address'] ?? '';
+        $url = $apiUrl . '?idcard=' . $form->idcard . '&app_id=' . $appId . '&app_secret=' . $appSecret;
+        $response = $this->sendRequest($url);
         if (! empty($response['data'])) {
             $this->result = [
                 'address' => $response['data']['address'],
