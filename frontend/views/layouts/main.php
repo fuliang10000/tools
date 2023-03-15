@@ -57,6 +57,7 @@ AppAsset::register($this);
                 ['label' => '手机号归属地查询', 'url' => ['/site/phone-query']],
                 ['label' => '身份证归属地查询', 'url' => ['/site/idcard-query']],
                 ['label' => '域名备案信息', 'url' => ['/site/domain-query']],
+                ['label' => '今日油价查询', 'url' => ['/site/oil-price-query']],
             ],
         ],
         [

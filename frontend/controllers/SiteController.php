@@ -8,6 +8,7 @@ use frontend\business\GrayImage;
 use frontend\business\IdcardQuery;
 use frontend\business\IpQuery;
 use frontend\business\KingHua;
+use frontend\business\OilPriceQuery;
 use frontend\business\PhoneQuery;
 use frontend\business\ShortLink;
 use frontend\business\SportsLottery;
@@ -17,6 +18,7 @@ use frontend\models\IdcardQueryForm;
 use frontend\models\IpQueryForm;
 use frontend\models\JsonFormatForm;
 use frontend\models\KingHuaForm;
+use frontend\models\OilPriceQueryForm;
 use frontend\models\PhoneQueryForm;
 use frontend\models\DomainQueryForm;
 use frontend\models\RunPhpCodeForm;
@@ -53,12 +55,12 @@ class SiteController extends BaseController
             $baseChange->baseChangeMake($model);
             if ($baseChange->code !== 200) {
                 Yii::$app->session->setFlash('error', $baseChange->message);
+            } else {
+                $model->result = $baseChange->result;
             }
-            $model->result = $baseChange->result;
         }
         return $this->render('baseChange', [
             'model' => $model,
-            'changeList' => $model::$_changeList,
         ]);
     }
 
@@ -70,8 +72,9 @@ class SiteController extends BaseController
             $ipQuery->ipQueryMake($model);
             if ($ipQuery->code !== 200) {
                 Yii::$app->session->setFlash('error', $ipQuery->message);
+            } else {
+                $model->result = $ipQuery->result;
             }
-            $model->result = $ipQuery->result;
         }
         $ip = getclientip();
         return $this->render('ipQuery', [
@@ -88,8 +91,9 @@ class SiteController extends BaseController
             $phoneQuery->phoneQueryMake($model);
             if ($phoneQuery->code !== 200) {
                 Yii::$app->session->setFlash('error', $phoneQuery->message);
+            } else {
+                $model->result = $phoneQuery->result;
             }
-            $model->result = $phoneQuery->result;
         }
         return $this->render('phoneQuery', [
             'model' => $model,
@@ -144,8 +148,9 @@ class SiteController extends BaseController
             $kingHua->kingHuaMake($model);
             if ($kingHua->code !== 200) {
                 Yii::$app->session->setFlash('error', $kingHua->message);
+            } else {
+                $model->result = $kingHua->result;
             }
-            $model->result = $kingHua->result;
         }
         return $this->render('kingHua', [
             'model' => $model,
@@ -160,8 +165,9 @@ class SiteController extends BaseController
             $sportsLottery->sportsLotteryMake();
             if ($sportsLottery->code !== 200) {
                 Yii::$app->session->setFlash('error', $sportsLottery->message);
+            } else {
+                $model->result = $sportsLottery->result;
             }
-            $model->result = $sportsLottery->result;
         }
         return $this->render('sportsLottery', [
             'model' => $model,
@@ -176,8 +182,9 @@ class SiteController extends BaseController
             $welfareLottery->welfareLotteryMake();
             if ($welfareLottery->code !== 200) {
                 Yii::$app->session->setFlash('error', $welfareLottery->message);
+            } else {
+                $model->result = $welfareLottery->result;
             }
-            $model->result = $welfareLottery->result;
         }
         return $this->render('welfareLottery', [
             'model' => $model,
@@ -242,8 +249,9 @@ class SiteController extends BaseController
             $shortLink->shortLinkMake($model);
             if ($shortLink->code !== 200) {
                 Yii::$app->session->setFlash('error', $shortLink->message);
+            } else {
+                $model->result = $shortLink->result;
             }
-            $model->result = $shortLink->result;
         }
         return $this->render('shortLink', [
             'model' => $model,
@@ -282,6 +290,27 @@ class SiteController extends BaseController
             }
         }
         return $this->render('jsonFormat', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionOilPriceQuery(): string
+    {
+        $model = new OilPriceQueryForm();
+        if (Yii::$app->request->isPost) {
+            $model->load(Yii::$app->request->post());
+        }
+        if ($model->validate()) {
+            $oilPriceQuery = new OilPriceQuery();
+            $oilPriceQuery->oilPriceQueryMake($model);
+            if ($oilPriceQuery->code !== 200) {
+                Yii::$app->session->setFlash('error', $oilPriceQuery->message);
+            } else {
+                $model->result = $oilPriceQuery->result;
+            }
+        }
+
+        return $this->render('oilPriceQuery', [
             'model' => $model,
         ]);
     }

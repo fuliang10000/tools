@@ -3,7 +3,6 @@
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\BaseChangeForm */
-/* @var $changeList \frontend\models\BaseChangeForm::$_changeList */
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
@@ -19,7 +18,7 @@ $this->title = '进制转换';
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'baseChange-form']); ?>
 
-            <?= $form->field($model, 'change')->dropDownList($changeList) ?>
+            <?= $form->field($model, 'change')->dropDownList($model::$_changeList) ?>
 
             <?= $form->field($model, 'num') ?>
 

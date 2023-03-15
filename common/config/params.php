@@ -35,5 +35,6 @@ return [
         'beian_url' => 'https://www.mxnzp.com/api/beian/search',
         'short_link' => 'https://www.mxnzp.com/api/shortlink/create',
         'idcard_address' => 'https://www.mxnzp.com/api/idcard/search',
+        'oil_price' => 'https://www.mxnzp.com/api/oil/search',
     ],
 ];

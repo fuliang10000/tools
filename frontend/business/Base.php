@@ -22,8 +22,7 @@ class Base
      */
     public function sendRequest(string $url, string $method = 'GET', array $data = [], array $header = []): array
     {
-        $httpClient = Yii::$container->get(Client::class);
-        $response = $httpClient->createRequest()
+        $response = Yii::$container->get(Client::class)->createRequest()
             ->setMethod($method)
             ->setUrl($url)
             ->setData($data)
