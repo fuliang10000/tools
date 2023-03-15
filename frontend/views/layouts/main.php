@@ -21,9 +21,8 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-    <meta name="keywords" content="进制转换, 彩图转灰图, 金花概率, 彩票机选号码, ip归属地查询, 手机号归属地查询, 身份证归属地查询, URL生成短链接, json格式化"/>
-    <meta name="description"
-          content="完全免费好用的工具盒, 各种进制转换, ip地址归属地查询, 手机号归属地查询, 身份证归属地查询, 彩色头像转灰色头像, 金花各类牌的出牌数出牌概率, 自动生成彩票机选号码, 提高彩票中奖率, URL生成短链接, json格式化"/>
+    <meta name="keywords" content="开发工具, 进制转换, 彩图转灰图, 金花概率, 彩票机选号码, ip归属地查询, 手机号归属地查询, 身份证归属地查询, URL生成短链接, json格式化"/>
+    <meta name="description" content="完全免费好用的工具盒, 各种进制转换, ip地址归属地查询, 手机号归属地查询, 身份证归属地查询, 彩色头像转灰色头像, 金花各类牌的出牌数出牌概率, 自动生成彩票机选号码, 提高彩票中奖率, URL生成短链接, json格式化, 运行PHP代码, 今日油价查询"/>
     <?php $this->head() ?>
 </head>
 <body>
