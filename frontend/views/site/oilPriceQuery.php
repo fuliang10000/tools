@@ -25,6 +25,8 @@ $this->title = '今日油价查询';
 
             <?= $form->field($model, 'province')->dropDownList($model::$_provinces) ?>
 
+            <label class="control-label" style="padding-left: 15px;">油号</label>
+            <label class="control-label" style="float: right; padding-right: 15px;">油价</label>
             <ul class="list-group">
                 <?php foreach ($model->result as $number => $price):?>
                     <li class="list-group-item">
