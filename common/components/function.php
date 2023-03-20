@@ -74,9 +74,9 @@ function getclientip($type = 0)
  * @param $timeout
  * @param array $data
  *
+ * @return bool|mixed|null|string
  * @author fuliang.
  *
- * @return bool|mixed|null|string
  */
 function http_get($url, $timeout = 10, $data = [])
 {
@@ -141,8 +141,8 @@ function sendRequest($Url, $Params, $Method = 'post')
 
 /**
  * 格式化字节大小
- * @param  number $size 字节数
- * @param  string $delimiter 数字和单位分隔符
+ * @param number $size 字节数
+ * @param string $delimiter 数字和单位分隔符
  * @return string            格式化后的带单位的大小
  * @author 麦当苗儿 <zuojiazi@vip.qq.com>
  */
@@ -161,9 +161,9 @@ function format_bytes($size, $delimiter = '')
  * @param $args 参数
  * @param $timeout 过期时间 秒
  *
+ * @return mixed
  * @author fuliang
  *
- * @return mixed
  */
 function http_post($url, $args, $timeout = 30)
 {
@@ -208,11 +208,11 @@ function dbCreateIn($params, $is_str = false)
 /**
  * 随机生成编码.
  *
- * @author
- *
  * @param $len 长度.
  * @param int $type 1:数字 2:字母 3:混淆
  * @return string
+ * @author
+ *
  */
 function rand_code($len, $type = 1)
 {
@@ -254,7 +254,8 @@ function rand_code($len, $type = 1)
 function p($arr)
 {
     //header('content-type:text/html;charset=utf8');
-    echo '<pre>' . print_r($arr, true);die;
+    echo '<pre>' . print_r($arr, true);
+    die;
 }
 
 /**
@@ -267,7 +268,7 @@ function p($arr)
  *
  * @return array 排好的数组
  */
-function  arrayMultiSort($arr, $key, $sort_order = SORT_DESC, $sort_type = SORT_NUMERIC)
+function arrayMultiSort($arr, $key, $sort_order = SORT_DESC, $sort_type = SORT_NUMERIC)
 {
     if (is_array($arr)) {
         foreach ($arr as $array) {
@@ -328,13 +329,13 @@ function debug($data, $op_file = true, $filename = 'debug')
 /**
  * 二维数据计算和.
  *
- * @author fuliang
- *
  * @param $arr
  * @param $key
  * @return int
+ * @author fuliang
+ *
  */
-function  arrayMultiSum($arr, $key)
+function arrayMultiSum($arr, $key)
 {
     return array_sum(array_column($arr, $key));
 }
@@ -346,9 +347,9 @@ function  arrayMultiSum($arr, $key)
  * @param $url
  * @param $path
  *
+ * @return bool true false
  * @author fuliang
  *
- * @return bool true false
  */
 function download($url, $path = null)
 {
@@ -368,14 +369,14 @@ function download($url, $path = null)
 /**
  * 加减密.
  *
- * @author fuliang
- *
  * @param $string
  * @param string $operation
  * @param string $key
  * @param int $expiry
  *
  * @return string
+ * @author fuliang
+ *
  */
 function authCode($string, $operation = ENCODE, $key = AUTH_KEY, $expiry = 0)
 {
@@ -430,10 +431,10 @@ function authCode($string, $operation = ENCODE, $key = AUTH_KEY, $expiry = 0)
 /**
  * 获取文件大小,以kb为单位.
  *
- * @author fuliang
- *
  * @param $path 文件路径
  * @return float
+ * @author fuliang
+ *
  */
 function getFilesize($path)
 {
@@ -443,10 +444,10 @@ function getFilesize($path)
 /**
  * 获取图片信息.
  *
- * @author fuliang
- *
  * @param $img 图片地址
  * @return array
+ * @author fuliang
+ *
  */
 function getImageInfo($img)
 {
@@ -469,13 +470,13 @@ function getImageInfo($img)
 /**
  * 导入Excel.
  *
- * @author fuliang
- *
  * @param $fileName
  * @param string $encode
  * @return array
  * @throws Exception
  * @throws PHPExcel_Exception
+ * @author fuliang
+ *
  */
 function importExcel($fileName, $encode = 'utf-8')
 {
@@ -510,8 +511,6 @@ function importExcel($fileName, $encode = 'utf-8')
 /**
  * 导出excel.
  *
- * @author fuliang
- *
  * @param  [type] $fileName   [文件名]
  * @param  [type] $arr_field  [excel 的title字段]
  * @param  [type] $arr_list   [ 导出的数组数据]
@@ -522,6 +521,8 @@ function importExcel($fileName, $encode = 'utf-8')
  * @param  [type] $statistics 统计头数组 array(array（"A1数据","B1数据"...）...)
  * @param  [type] $list_title_index 列表头的行数
  * @param  [type] $style=array("A1"=>array("align"=>"center,left,right","weight"=>'bold'),"height"=array("3"=>"25"..))
+ * @author fuliang
+ *
  */
 function exportExcel($fileName, $arr_field, $arr_list, $array_keys, $k_time = 'createtime', $model = array(), $title = null, $statistics = array(), $list_title_index = 1, $style = array())
 {
@@ -670,11 +671,11 @@ function exportCsv($fileName, $heads, $data)
 /**
  * 数组转换成xml.
  *
- * @author fuliang
- *
  * @param $arr 数组
  *
  * @return string xml结果
+ * @author fuliang
+ *
  */
 function arrayToXml($arr)
 {
@@ -748,9 +749,9 @@ function getfirstchar($s0)
 /**
  * 获取天的问候语.
  *
+ * @return string
  * @author fuliang
  *
- * @return string
  */
 function getDayReeting()
 {
@@ -775,7 +776,7 @@ function getDayReeting()
 /**
  * 系统非常规MD5加密方法
  *
- * @param  string $str 要加密的字符串
+ * @param string $str 要加密的字符串
  * @return string
  */
 function userMd5($str, $auth_key)
@@ -850,7 +851,7 @@ function read_all_dir($dir, $type, $icon)
 /**
  * 删除当前文件夹和文件
  * @param  [type]  $path   [description]
- * @param  boolean $delDir [description]
+ * @param boolean $delDir [description]
  * @return [type]          [description]
  */
 function delDirAndFile($path, $delDir = TRUE)
@@ -1050,10 +1051,10 @@ function moveFile($source, $target)
 /**
  * 转换为url参数.
  *
- * @author fuliang
- *
  * @param $params
  * @return string
+ * @author fuliang
+ *
  */
 function toUrlParams($params)
 {
@@ -1075,11 +1076,11 @@ function toUrlParams($params)
 /**
  * 生成plist文件
  *
- * @author fuliang
- *
  * @param  [type] $data     要写入文件的信息
  * @param  [type] $filename 生成文件的路径
  * @return [type]           [description]
+ * @author fuliang
+ *
  */
 function createPlist($data, $create_dir, $filename)
 {
@@ -1123,11 +1124,11 @@ function createPlist($data, $create_dir, $filename)
 /**
  * 读取socket数据.
  *
- * @author fuliang
- *
  * @param $socket
  * @param bool|true $isDividePkg
  * @return array|null|string
+ * @author fuliang
+ *
  */
 function socketRead($socket, $isDividePkg = true)
 {
@@ -1147,9 +1148,9 @@ function socketRead($socket, $isDividePkg = true)
 /**
  * 获取访问的平台.
  *
+ * @return int
  * @author fuliang
  *
- * @return int
  */
 function getPlatform()
 {
@@ -1194,9 +1195,9 @@ function isMobile()
 /**
  * 是否是微信,如果是则返回微信版本.
  *
+ * @return bool
  * @author fuliang
  *
- * @return bool
  */
 function isWeiXin()
 {
@@ -1214,11 +1215,11 @@ function isWeiXin()
 /**
  * 获取apk版本号
  *
- * @author fuliang
- *
  * @param $filename apk包路径
  *
  * @return int|null|string
+ * @author fuliang
+ *
  */
 function getApkVersion($filename)
 {
@@ -1246,10 +1247,10 @@ function getApkVersion($filename)
  *
  * 优先从淘宝获取,获取不到再从新浪获取.
  *
- * @author fuliang
- *
  * @param $ip
  * @return array
+ * @author fuliang
+ *
  */
 function getPCInfoByIp($ip)
 {
@@ -1313,28 +1314,28 @@ function getPercent($preNum, $preTwoNum, $isReturn = 0)
 /**
  * 生成订单号.
  *
- * @author fuliang.
- *
  * @param $uid
  * @return string
+ * @author fuliang.
+ *
  */
 function makeOrderNo($uid)
 {
     return mt_rand(10, 99)
-    . sprintf('%010d', time() - 946656000)
-    . sprintf('%03d', (float)microtime() * 1000)
-    . sprintf('%03d', (int)$uid % 1000);
+        . sprintf('%010d', time() - 946656000)
+        . sprintf('%03d', (float)microtime() * 1000)
+        . sprintf('%03d', (int)$uid % 1000);
 }
 
 /**
  * 格式化金额.
  *
- * @author fuliang
- *
  * @param $amount 金额
  * @param $scale 保留小数位数
  * @param $is_floor 是否四舍五入
  * @return string
+ * @author fuliang
+ *
  */
 function formatAmount($amount, $scale = 2, $is_floor = 1)
 {
@@ -1350,11 +1351,11 @@ function formatAmount($amount, $scale = 2, $is_floor = 1)
 /**
  * 格式化字节大小.
  *
+ * @param number $size 字节数
+ * @param string $delimiter 数字和单位分隔符
+ * @return string 格式化后的带单位的大小
  * @author fuliang
  *
- * @param  number $size 字节数
- * @param  string $delimiter 数字和单位分隔符
- * @return string 格式化后的带单位的大小
  */
 function formatBytes($size, $delimiter = '')
 {
@@ -1366,12 +1367,12 @@ function formatBytes($size, $delimiter = '')
 /**
  * 格式化数量.
  *
- * @author fuliang
- *
- * @param  number $count 个数
- * @param  string $delimiter 数字和单位分隔符
+ * @param number $count 个数
+ * @param string $delimiter 数字和单位分隔符
  *
  * @return string 格式化后的带单位的大小
+ * @author fuliang
+ *
  */
 function formatCount($count, $delimiter = '')
 {
@@ -1389,13 +1390,13 @@ function formatCount($count, $delimiter = '')
 /**
  * 友好的时间显示
  *
- * @author fuliang
- *
  * @param int $sTime 待显示的时间
  * @param string $type 类型. normal | mohu | full | ymd | other
  * @param string $alt 已失效
  *
  * @return string
+ * @author fuliang
+ *
  */
 function friendly_date($sTime, $type = 'normal', $alt = 'false')
 {
@@ -1519,12 +1520,12 @@ function getGameIconOld($gameid)
 /**
  * 数组分页函数.
  *
- * @author fuliang
- *
  * @param $array 查询出来的所有数组
  * @param int $page 当前第几页
  * @param int $count每页多少条数据
  * @return array [需要的数据,总页数,总记录数]
+ * @author fuliang
+ *
  */
 function arrayPage($array, $page = 1, $count = 10)
 {
@@ -1550,10 +1551,10 @@ function arrayPage($array, $page = 1, $count = 10)
 /**
  * 执行shell脚本.
  *
- * @author fuliang
- *
  * @param $cmd
  * @return string
+ * @author fuliang
+ *
  */
 function execShell($cmd)
 {
@@ -1587,12 +1588,12 @@ function execShell($cmd)
 /**
  * 生成token.
  *
- * @author fuliang
- *
  * @param $signKey
  * @param $params
  *
  * @return string
+ * @author fuliang
+ *
  */
 function makeToken($signKey, $params)
 {
@@ -1613,11 +1614,11 @@ function makeToken($signKey, $params)
 /**
  * 反引用一个使用 addcslashes()转义的字符串
  *
- * @author fuliang
- *
  * @param $params
  *
  * @return array
+ * @author fuliang
+ *
  */
 function __stripcslashes($params)
 {
@@ -1647,13 +1648,13 @@ function getGameDetailUrl($gid)
 /**
  * 获取游戏资讯点击地址.
  *
- * @author fuliang
- *
  * @param $id 资讯id
  * @param $gid 游戏id
  * @param int $type 0:非下载 1:安卓下载 2: IOS下载
  *
  * @return string
+ * @author fuliang
+ *
  */
 function getGameInfoUrl($id, $gid, $type = 0)
 {
@@ -1672,10 +1673,10 @@ function getGameInfoUrl($id, $gid, $type = 0)
 /**
  * 格式化搜索时间.
  *
- * @author fuliang
- *
  * @param bool|true $is_now
  * @return array [开始时间,结束时间,相差的天数]
+ * @author fuliang
+ *
  */
 function getSearchDate($is_now = true)
 {
@@ -1732,9 +1733,9 @@ function sig_func()
  * // the result is:
  * // [5, 10, 15, 20]
  * ```
+ * @return array
  * @author fuliang
  * @date 2018-09-27
- * @return array
  */
 function get_make_num($total, $ceil = 5)
 {
@@ -1780,9 +1781,9 @@ function get_make_num($total, $ceil = 5)
  *    [7, 8, 9]
  * ];
  * ```
+ * @return array
  * @author fuliang
  * @date 2018-11-30
- * @return array
  */
 function array_insert(&$array, $position, $insert_array)
 {
@@ -1795,7 +1796,6 @@ function array_insert(&$array, $position, $insert_array)
 /**
  * 生成缩略图
  *
- * @author fuliang
  * @param string $filename 文件名
  * @param float $scale 默认缩放比例 默认0.5原图的一半
  * @param int $dst_w 最大宽度
@@ -1804,6 +1804,7 @@ function array_insert(&$array, $position, $insert_array)
  * @param string $pre 默认缩略图前缀thumb_
  * @param boolean $delSource 是否删除源文件标志(谨慎使用)
  * @return string 最终保存路径及文件名
+ * @author fuliang
  */
 function mk_thumb_image($filename, $scale = 0.5, $dst_w = null, $dst_h = null, $dir = 'upload/images', $pre = 'thumb_', $delSource = false)
 {
@@ -1876,12 +1877,13 @@ function friendly_sku($sku, $limit = 10, $style = 0)
 /**
  * 将图片转换成base64编码
  *
- * @author fuliang
- * @date 2019-09-23
  * @param string $image_file 图片路径
  * @return string
+ * @author fuliang
+ * @date 2019-09-23
  */
-function base64EncodeImage ($image_file) {
+function base64EncodeImage($image_file)
+{
     $image_info = getimagesize($image_file);
     $image_data = fread(fopen($image_file, 'r'), filesize($image_file));
     $base64_image = 'data:' . $image_info['mime'] . ';base64,' . chunk_split(base64_encode($image_data));
@@ -1892,13 +1894,14 @@ function base64EncodeImage ($image_file) {
 /**
  * 复制文件到指定目录
  *
- * @author fuliang
- * @date 2019-10-08
  * @param string $source 源文件
  * @param string $dest 目的文件
  * @return boolean true
+ * @author fuliang
+ * @date 2019-10-08
  */
-function fileCopy($source, $dest) {
+function fileCopy($source, $dest)
+{
 
     // 如果源目录/文件不存在返回false
     if (!file_exists($source)) return false;
@@ -1915,14 +1918,14 @@ function fileCopy($source, $dest) {
 /**
  * 发送SMG消息.
  *
- * @author fuliang
- *
  * @param int $mobile 手机号
  * @param string $tempId 模板id
  * @param array $tempParams 发送的模板参数
  * @param number $channel 渠道 1阿里云，2易信（默认1）
  *
  * @return bool true|false
+ * @author fuliang
+ *
  */
 function sendSms($mobile, $tempId, $tempParams = [], $channel = SMS_ALI)
 {
@@ -2002,11 +2005,11 @@ function sendVerifyCodeOnRegOk($mobile, $data = [], $smsId = SMS_VERIFY_CODE_REG
  *
  * 成功则删除已发的.
  *
- * @author fuliang
- *
  * @param int $code 验证码
  * @param int $mobile 手机号
  * @return bool
+ * @author fuliang
+ *
  */
 function checkVerifyCode($code, $mobile)
 {
@@ -2056,10 +2059,10 @@ function checkVerifyCode($code, $mobile)
 function getDistance($lng1, $lat1, $lng2, $lat2, $type = true)
 {
     $earthRadius = 6367000; // 地球半径系数
-    $lat1 = ($lat1 * pi() ) / 180;
-    $lng1 = ($lng1 * pi() ) / 180;
-    $lat2 = ($lat2 * pi() ) / 180;
-    $lng2 = ($lng2 * pi() ) / 180;
+    $lat1 = ($lat1 * pi()) / 180;
+    $lng1 = ($lng1 * pi()) / 180;
+    $lat2 = ($lat2 * pi()) / 180;
+    $lng2 = ($lng2 * pi()) / 180;
     $calcLongitude = $lng2 - $lng1;
     $calcLatitude = $lat2 - $lat1;
     $stepOne = pow(sin($calcLatitude / 2), 2) + cos($lat1) * cos($lat2) * pow(sin($calcLongitude / 2), 2);
@@ -2084,14 +2087,38 @@ function getDistance($lng1, $lat1, $lng2, $lat2, $type = true)
  * // the result is:
  * $modelName = 'AdminUser';
  * ```
+ * @return string|null
  * @author fuliang
  * @date 2020-03-13
- * @return string|null
  */
 function makeModelName($tableName, $prefix = null)
 {
     if ($prefix) $tableName = ltrim($tableName, $prefix);
-    $modelName = str_replace('_', '', ucwords($tableName, '_'));
+    return str_replace('_', '', ucwords($tableName, '_'));
+}
 
-    return $modelName;
+/**
+ * 获取指定目录下所有文件的文件名
+ *
+ * @param string $path 目录
+ * @return array
+ * @author fuliang
+ * @date 2023-03-20
+ */
+if (!function_exists('getDirAllFileName')) {
+    function getDirAllFileName(string $path): array
+    {
+        static $result;
+        $files = scandir($path);
+        foreach ($files as $file) {
+            if (!in_array($file, ['.', '..'])) {
+                if (is_dir($path . '/' . $file)) {
+                    getDirAllFileName($path . '/' . $file);
+                } else {
+                    $result[] = basename($file);
+                }
+            }
+        }
+        return $result;
+    }
 }
