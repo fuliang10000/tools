@@ -14,10 +14,10 @@ return [
         ],
         'redis' => [
             'class'    => 'yii\redis\Connection',
-            'hostname' => '172.17.0.1',
+            'hostname' => '127.0.0.1',
             'port'     => 6379,
-            'database' => 1,
-            'password' => '2008Fuliang11',
+            'database' => 15,
+            'password' => '2008Fuliang11~',
         ],
     ],
 ];

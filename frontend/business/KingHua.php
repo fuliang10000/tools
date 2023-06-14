@@ -106,7 +106,6 @@ class KingHua extends Base
         }
 
         $totalBa = $form->people * $form->ba;
-        var_dump($totalBa);
         $this->result = [
             'shanpai' => $shanpai . ' （' . sprintf("%.2f", $shanpai / $totalBa * 100) . '%）',
             'duizi' => $duizi . ' （' . sprintf("%.2f", $duizi / $totalBa * 100) . '%）',
