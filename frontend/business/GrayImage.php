@@ -2,6 +2,7 @@
 
 namespace frontend\business;
 
+use App\components\factory\UploadFactory;
 use crazyfd\qiniu\Qiniu;
 use frontend\models\UploadImageForm;
 use Yii;
@@ -58,7 +59,7 @@ class GrayImage extends Base
             return '';
         }
         $fileName = 'gray_' . time() . rand(100000, 999999) . '.' . $imgType;
-        $filePath = '/uploads/' . date('Ymd') . '/';
+        $filePath = '/uploads/' . date('Ymd') . DIRECTORY_SEPARATOR;
         $grayPath = \Yii::getAlias('@webroot') . $filePath;
         if (!is_dir($grayPath)) {
             mkdir($grayPath, 0777, true);
@@ -67,7 +68,7 @@ class GrayImage extends Base
         $func($image, $grayPath);
         imagedestroy($image);
 
-        return $this->uploadToQiniu($grayPath, true);
+        return $this->uploadToOss($grayPath, true);
     }
 
     /**
@@ -78,14 +79,14 @@ class GrayImage extends Base
      * @return string
      * @throws \Exception
      */
-    public function uploadToQiniu(string $filePath, bool $deleteSource = false, string $dir = 'gray-images'): string
+    public function uploadToOss(string $filePath, bool $deleteSource = false, string $dir = 'gray-images'): string
     {
-        $temp = explode('/', $filePath);
+        $temp = explode(DIRECTORY_SEPARATOR, $filePath);
         $fileName = end($temp);
-        $qiniu = new Qiniu(\Yii::$app->params['qiniu_config']['ak'], Yii::$app->params['qiniu_config']['sk'], Yii::$app->params['qiniu_config']['domain'], Yii::$app->params['qiniu_config']['bucket']);
-        $qiniu->uploadFile($filePath, $dir . '/' . date('Ymd') . '/' . $fileName);
+        $ossClient = UploadFactory::create(UploadFactory::ALIYUN);
+        $fileUrl = $ossClient->uploadFile($filePath, $dir . DIRECTORY_SEPARATOR . date('Ymd') . DIRECTORY_SEPARATOR . $fileName);
         if ($deleteSource) @unlink($filePath);
 
-        return 'http://' . $qiniu->getLink($dir . '/' . date('Ymd') . '/' . $fileName);
+        return $fileUrl;
     }
 }

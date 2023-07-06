@@ -12,6 +12,13 @@ return [
         'sk' => 'Z2dqvRExvtf_YfK8aP4yiqNMQjRopqfIRF_AQSwG',
         'bucket' => 'yimuyuan',
     ],
+    'aliyun_config' => [
+        'accessKeyId' => 'LTAI5t7FX1pfCkFcbk69vkbU',
+        'accessKeySecret' => 'kka1LWrpMAwW6CTdDfmfb67DCIkTsU',
+        'endpoint' => 'http://oss-cn-chengdu.aliyuncs.com',
+        'ossUrl' => 'https://tools-gray-resource.oss-cn-chengdu.aliyuncs.com',
+        'bucket' => 'tools-gray-resource',
+    ],
     'baidu_cloud' => [
         'ip_address' => [
             'AccessKey' => '45430055c372416f8e9d66900c1d42e6',
